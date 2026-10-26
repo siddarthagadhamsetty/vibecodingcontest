@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en" data-sport="shuttle">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lahari — Economics, code, and match day</title>
+    <meta
+      name="description"
+      content="Lahari is an engineering student at BITS Pilani, Hyderabad Campus, studying economics and computer science, and playing badminton and football."
+    />
+    <meta property="og:title" content="Lahari — Economics, code, and match day" />
+    <meta
+      property="og:description"
+      content="A personal portfolio: economics, computer science, badminton, and football."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#08110d" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=Sora:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+      try {
+        var savedSport = sessionStorage.getItem("lahari-sport");
+        if (savedSport === "pitch" || savedSport === "shuttle") {
+          document.documentElement.dataset.sport = savedSport;
+        }
+      } catch (err) {}
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="site-header" id="top">
+      <a class="logo" href="#top">
+        <svg class="shuttle" viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M8 14c2.4-1 5-1 8 0M16 14c2.6-1 5.2-1 8 0M9 18c2.2-1 5-1 7.2.3 2-1.2 4.6-1.3 6.8-.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="16" cy="24" r="3.2" fill="#dff25a"/>
+        </svg>
+        <svg class="ball" viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="16" cy="16" r="8" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M10 12c2 2 2 6 0 8M22 12c-2 2-2 6 0 8M12 9c1.4 2.6 6.6 2.6 8 0" fill="none" stroke="#f2c14e" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <span>Lahari</span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Primary">
+        <a href="#lineup">Lineup</a>
+        <a href="#rally">Rally</a>
+        <a href="#model">Model</a>
+        <a href="#stack">Stack</a>
+        <a href="#frames">Frames</a>
+        <a href="#note">Note</a>
+      </nav>
+
+      <div class="header-tools">
+        <p class="clock" id="clock" aria-hidden="true">HYD --:--:--</p>
+        <div class="sport-switch" role="group" aria-label="Page theme">
+          <button type="button" data-sport="shuttle" aria-pressed="true">Shuttle</button>
+          <button type="button" data-sport="pitch" aria-pressed="false">Pitch</button>
+        </div>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="nav"
+          aria-label="Open menu"
+        >
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <main id="content" tabindex="-1">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-media">
+          <img
+            class="pane pane-a"
+            src="images/badminton-rally.jpg"
+            alt="An indoor badminton player, seen from behind, jumps into a smash as the shuttlecock leaves the racket."
+            draggable="false"
+            fetchpriority="high"
+          />
+          <img
+            class="pane pane-b"
+            src="images/football-night.jpg"
+            alt="A footballer in a dark kit strikes a ball on a floodlit grass pitch at night."
+            draggable="false"
+            fetchpriority="high"
+          />
+          <p class="pane-label pane-label-a">Badminton</p>
+          <p class="pane-label pane-label-b">Football</p>
+          <button
+            class="seam-handle"
+            id="seam"
+            type="button"
+            role="slider"
+            aria-valuemin="22"
+            aria-valuemax="78"
+            aria-valuenow="56"
+            aria-orientation="horizontal"
+            aria-label="Shift the line between badminton and football"
+          >
+            <span class="grip" aria-hidden="true"></span>
+            <span class="drag-hint">Drag</span>
+          </button>
+        </div>
+        <div class="hero-copy">
+          <p class="kicker">BITS Pilani · Hyderabad Campus</p>
+          <h1 id="hero-title">Lahari</h1>
+          <p class="role-line">Economics <span>+</span> Computer Science</p>
+          <p class="lede">
+            Engineering student. I study how systems clear — markets on paper,
+            rallies and matches once the session ends.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#rally">Play a rally</a>
+            <a class="btn btn-ghost" href="#lineup">The lineup</a>
+          </div>
+        </div>
+      </section>
+
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker-track">
+          <p>
+            <span>Economics</span><span>Computer Science</span><span>Badminton</span>
+            <span>Football</span><span>Hyderabad</span><span>Python</span>
+            <span>Markets</span><span>Match day</span><span>Supply and demand</span>
+            <span>Rallies</span><span>BITS Pilani</span>
+          </p>
+          <p>
+            <span>Economics</span><span>Computer Science</span><span>Badminton</span>
+            <span>Football</span><span>Hyderabad</span><span>Python</span>
+            <span>Markets</span><span>Match day</span><span>Supply and demand</span>
+            <span>Rallies</span><span>BITS Pilani</span>
+          </p>
+        </div>
+      </div>
+
+      <section class="lineup" id="lineup" aria-labelledby="lineup-title">
+        <div class="wrap lineup-grid">
+          <figure class="lineup-photo">
+            <img
+              src="images/badminton-rally.jpg"
+              alt="Teal indoor lights over a wooden court as a player reaches for a smash."
+            />
+            <img class="sticker" src="images/shuttlecock.jpg" alt="" />
+          </figure>
+          <div class="lineup-copy">
+            <p class="eyebrow">Lineup</p>
+            <h2 id="lineup-title">Two clocks, one student.</h2>
+            <p>
+              I’m Lahari, an engineering student at BITS Pilani, Hyderabad Campus.
+              Economics and computer science sit on the same timetable: what people
+              choose, what a price is saying, and how to write that down so a
+              program can push it around.
+            </p>
+            <p>
+              Off the timetable I play badminton and football. A rally punishes a
+              lazy foot. A match is a pile of decisions happening at once. I like
+              both clocks — the long one in class, and the short one under lights.
+            </p>
+            <blockquote class="pull">
+              A rally is a short market. Both clear fast, and both punish a slow read.
+            </blockquote>
+            <dl class="facts">
+              <div>
+                <dt>Campus</dt>
+                <dd>BITS Pilani, Hyderabad</dd>
+              </div>
+              <div>
+                <dt>Programme</dt>
+                <dd>Economics + Computer Science</dd>
+              </div>
+              <div>
+                <dt>Sports</dt>
+                <dd>Badminton and football</dd>
+              </div>
+              <div>
+                <dt>On this page</dt>
+                <dd>A seam, a rally, a market</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <figure class="campus-band wrap">
+          <img
+            src="images/campus-hour.jpg"
+            alt="Brick academic buildings and trees around a wide courtyard in low golden sun."
+          />
+          <figcaption>Between a lecture and a game</figcaption>
+        </figure>
+      </section>
+
+      <section class="builds" id="builds" aria-labelledby="builds-title">
+        <div class="wrap builds-layout">
+          <div>
+            <p class="eyebrow">On this page</p>
+            <h2 id="builds-title">Three things you can touch.</h2>
+            <div class="build-list">
+              <a
+                class="build-row"
+                href="#top"
+                data-img="images/football-night.jpg"
+                data-alt="Night football under floodlights, one half of the opening frame."
+              >
+                <span class="build-index">01</span>
+                <span>
+                  <h3>The seam</h3>
+                  <p>Drag the line on the opening frame. Badminton on one side, football on the other.</p>
+                </span>
+                <span class="build-go">Drag</span>
+              </a>
+              <a
+                class="build-row"
+                href="#rally"
+                data-img="images/badminton-rally.jpg"
+                data-alt="A badminton smash, the picture behind the playable rally."
+              >
+                <span class="build-index">02</span>
+                <span>
+                  <h3>Rally physics</h3>
+                  <p>A shuttlecock sheds speed. A football keeps it. Same controls, two models.</p>
+                </span>
+                <span class="build-go">Play</span>
+              </a>
+              <a
+                class="build-row"
+                href="#model"
+                data-img="images/study-desk.jpg"
+                data-alt="A desk with code, a supply and demand sketch, a shuttlecock, and a football."
+              >
+                <span class="build-index">03</span>
+                <span>
+                  <h3>Clearing price</h3>
+                  <p>Move demand and supply. Watch a small market find a price.</p>
+                </span>
+                <span class="build-go">Push</span>
+              </a>
+            </div>
+          </div>
+          <div class="build-preview">
+            <img
+              id="build-preview"
+              src="images/football-night.jpg"
+              alt="Night football under floodlights, one half of the opening frame."
+            />
+          </div>
+        </div>
+      </section>
+
+      <section class="rally" id="rally" aria-labelledby="rally-title">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="eyebrow">Rally</p>
+            <h2 id="rally-title">Stay under it.</h2>
+            <p class="quiet" id="rally-copy">
+              Shuttle mode: the bird sheds speed in a hurry. Track it with the
+              pointer and keep the rally alive. Switch to Pitch in the header for
+              a heavier ball.
+            </p>
+          </div>
+          <div class="play-layout">
+            <div class="play-stage" id="play-stage">
+              <canvas
+                id="court"
+                tabindex="0"
+                aria-label="Playable court. Move the pointer along the baseline. Arrow keys work after you tab here. Serve starts the point."
+              ></canvas>
+              <div class="hud">
+                <p>Rally <strong id="rally-count">0</strong></p>
+                <p>Best <strong id="best-count">0</strong></p>
+                <button class="btn btn-primary btn-small" id="serve" type="button">Serve</button>
+                <button class="btn btn-ghost btn-small" id="sound" type="button" aria-pressed="false">
+                  Sound off
+                </button>
+              </div>
+              <p class="play-status" id="play-status" role="status">Serve to start.</p>
+            </div>
+            <aside class="play-notes">
+              <h3>Two models, one baseline</h3>
+              <p>
+                The shuttlecock carries real drag, so a hard hit dies on the way up.
+                The football holds its pace and answers more to gravity. Miss the
+                baseline and the point is over.
+              </p>
+              <p>
+                On a phone, drag along the court. With a keyboard, tab onto the
+                court and use the arrow keys, then Enter to serve.
+              </p>
+              <img
+                src="images/boots.jpg"
+                alt="Worn football boots on wet grass beside a white pitch line, floodlights soft behind them."
+              />
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="model" id="model" aria-labelledby="model-title">
+        <div class="wrap model-grid">
+          <div>
+            <p class="eyebrow">Model</p>
+            <h2 id="model-title">A price that clears.</h2>
+            <p class="quiet">
+              Demand slopes down, supply slopes up, and the dot is where they
+              agree. Push match day and more people want the same hour. This is
+              the picture from class, with a slider.
+            </p>
+            <div class="slider-field">
+              <label for="demand">Demand appetite <span id="demand-val">104</span></label>
+              <input id="demand" type="range" min="40" max="140" value="104" />
+            </div>
+            <div class="slider-field">
+              <label for="supply">Supply already out there <span id="supply-val">14</span></label>
+              <input id="supply" type="range" min="0" max="80" value="14" />
+            </div>
+            <div class="presets" role="group" aria-label="Market presets">
+              <button type="button" class="btn-ink" data-a="72" data-c="30">Quiet afternoon</button>
+              <button type="button" class="btn-ink is-on" data-a="104" data-c="14">Ordinary evening</button>
+              <button type="button" class="btn-ink" data-a="132" data-c="8">Match day</button>
+            </div>
+            <div class="eq-stats">
+              <p><span>Price</span><strong id="eq-p">—</strong></p>
+              <p><span>Quantity</span><strong id="eq-q">—</strong></p>
+            </div>
+            <p id="eq-story" aria-live="polite"></p>
+            <p class="quiet" id="eq-metaphor"></p>
+          </div>
+          <div class="chart-wrap">
+            <svg id="chart" viewBox="0 0 640 420" role="img" aria-labelledby="chart-title">
+              <title id="chart-title">Supply and demand chart</title>
+              <g id="grid"></g>
+              <line id="eq-v"></line>
+              <line id="eq-h"></line>
+              <path id="demand-path"></path>
+              <path id="supply-path"></path>
+              <circle id="eq-dot" r="7"></circle>
+              <text id="label-d">D</text>
+              <text id="label-s">S</text>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section class="stack" id="stack" aria-labelledby="stack-title">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="eyebrow">Stack</p>
+            <h2 id="stack-title">A formation, not a trophy case.</h2>
+            <p class="quiet">What I’m actually using. Tap a name.</p>
+          </div>
+          <div class="stack-layout">
+            <div class="board" id="board">
+              <div class="row">
+                <button type="button" class="token" data-skill="python" aria-pressed="true">Python</button>
+              </div>
+              <div class="row">
+                <button type="button" class="token" data-skill="micro" aria-pressed="false">Micro</button>
+                <button type="button" class="token" data-skill="js" aria-pressed="false">JavaScript</button>
+                <button type="button" class="token" data-skill="macro" aria-pressed="false">Macro</button>
+              </div>
+              <div class="row">
+                <button type="button" class="token" data-skill="stats" aria-pressed="false">Statistics</button>
+                <button type="button" class="token" data-skill="dsa" aria-pressed="false">DSA</button>
+                <button type="button" class="token" data-skill="web" aria-pressed="false">The web</button>
+                <button type="button" class="token" data-skill="markets" aria-pressed="false">Markets</button>
+              </div>
+            </div>
+            <article class="skill-card" id="skill-card" aria-live="polite">
+              <p class="eyebrow" id="skill-role">The striker</p>
+              <h3 id="skill-name">Python</h3>
+              <p id="skill-text">
+                The language I open when an idea needs a script, a plot, or a quick model.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="frames-section" id="frames" aria-labelledby="frames-title">
+        <div class="wrap">
+          <p class="eyebrow">Frames</p>
+          <h2 id="frames-title">Six stills from the two clocks.</h2>
+          <p class="quiet frames-intro">Drag sideways, or use the arrow keys once this strip is focused.</p>
+        </div>
+        <div class="frames" id="frame-scroller" tabindex="0" aria-label="Photo strip">
+          <figure>
+            <img src="images/badminton-rally.jpg" alt="Indoor smash under teal lights on a wooden court." />
+            <figcaption>The smash</figcaption>
+          </figure>
+          <figure>
+            <img src="images/football-night.jpg" alt="A strike on a floodlit football pitch at night." />
+            <figcaption>Floodlights</figcaption>
+          </figure>
+          <figure>
+            <img src="images/study-desk.jpg" alt="Lamp-lit desk with a laptop, a supply and demand notebook, coffee, a shuttlecock, and a football." />
+            <figcaption>The desk</figcaption>
+          </figure>
+          <figure>
+            <img src="images/campus-hour.jpg" alt="A campus courtyard in golden hour, with trees and brick academic blocks." />
+            <figcaption>Campus hour</figcaption>
+          </figure>
+          <figure>
+            <img src="images/shuttlecock.jpg" alt="Close-up of a shuttlecock above a wet green line." />
+            <figcaption>The bird</figcaption>
+          </figure>
+          <figure>
+            <img src="images/boots.jpg" alt="Muddy football boots resting on a white pitch line at night." />
+            <figcaption>After the game</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="note" id="note" aria-labelledby="note-title">
+        <div class="wrap note-grid">
+          <div>
+            <img
+              class="note-photo"
+              src="images/study-desk.jpg"
+              alt="Late desk: code on a laptop, a market sketch, a shuttlecock, and a football."
+            />
+            <p class="eyebrow">Note</p>
+            <h2 id="note-title">Leave a note.</h2>
+            <p class="quiet">
+              Classes, games, or something we should build. This page keeps the
+              note here and can copy it. It does not mail a server.
+            </p>
+            <p class="quiet">Lahari · BITS Pilani, Hyderabad Campus</p>
+          </div>
+          <form class="contact-form" id="contact-form" novalidate>
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" autocomplete="name" required />
+              <p class="error" id="name-error"></p>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required />
+              <p class="error" id="email-error"></p>
+            </div>
+            <div class="field">
+              <label for="about">What’s this about?</label>
+              <select id="about" name="about" required>
+                <option value="">Choose one</option>
+                <option value="A class or idea">A class or idea</option>
+                <option value="Badminton or football">Badminton or football</option>
+                <option value="Building something">Building something</option>
+                <option value="Just saying hi">Just saying hi</option>
+              </select>
+              <p class="error" id="about-error"></p>
+            </div>
+            <div class="field">
+              <label for="message">Note</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+                placeholder="A rally, a course, a thing we should make."
+              ></textarea>
+              <p class="error" id="message-error"></p>
+            </div>
+            <div class="form-actions">
+              <button class="btn btn-primary" type="submit">Keep this note</button>
+              <button class="btn btn-ghost" id="copy-note" type="button" hidden>Copy note</button>
+            </div>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+            <pre id="note-preview" hidden></pre>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Lahari · BITS Pilani, Hyderabad Campus</p>
+      <p>Stills made for this page, not match photos.</p>
+      <a href="#top">Back to top</a>
+    </footer>
+
+    <noscript>
+      <p class="noscript">The rally and the market model need JavaScript. The rest of the page still reads.</p>
+    </noscript>
+    <script src="script.js"></script>
+  </body>
+</html>
